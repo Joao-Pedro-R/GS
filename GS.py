@@ -1,5 +1,6 @@
 import random
 pix = random.randint(111111111,999999999) #Utilizando da biblioteca random, se cria uma "chave pix" para o programa
+cp = random.randint(00000000,99999999) #Para servir de caixa postal
 contas = {} #guarda um cpf com a pontuação obtida
 csa = [] #contas para serem analisadas
 evpart = {} #guarda um cpf com a quantidade de eventos participados
@@ -23,7 +24,7 @@ def doacao(): #Função para informar o usuário como ajudar a causa através de
         print("Pontos de coleta: ")
         for i in pc:
             print(f"- {i}")
-        print("Caixa postal: ~~~~~~~~")
+        print(f"Caixa postal: {str(cp[0:5])}-{str(cp[5:8])}")
     else:
         print("Número inválido!")
 
@@ -145,13 +146,14 @@ def info(cpf): #Esta função mostra as informações da conta
     print(f"{str(cpf)[0:3]}.{str(cpf)[3:6]}.{str(cpf)[6:9]}-{str(cpf)[9:11]}")
     print("--" * 25)
     print("Idade do Usuário:")
-    print(dados[cpf][0][1])
+    print(f"{dados[cpf][1]} anos")
     print("--" * 25)
     print("Estado Civil do Usuário:")
-    print(dados[cpf][0][2])
+    print(dados[cpf][2])
     print("--" * 25)
     print("Profissão do Usuário:")
-    print(dados[cpf][0][3])
+    print(dados[cpf][3])
+    print("--" * 25)
     if cpf in mod:
         print("Nível: \nModerador")
     else:
@@ -175,7 +177,6 @@ def cadastro(): #Criar uma conta nível participante
     while True:
         global ldados #lista de dados
         ldados = []
-        print("--" * 50)
         print("Insira as informações a seguir para criar uma conta")
         print("CPF (Somente números)")
         cpf2 = int(input())
@@ -197,6 +198,10 @@ def cadastro(): #Criar uma conta nível participante
                 print("Estado Civil")
                 ec = input()
                 ldados.append(ec)
+                print("--" * 25)
+                print("Profissão")
+                prof = input()
+                ldados.append(prof)
                 part.append(int(cpf2))
                 dados[cpf2] = ldados
                 evpart[cpf2] = 0
@@ -216,7 +221,7 @@ def menup(): #Entrar em uma conta participante
         print("=" * 25)
         print(" " * 7, "MENU PART")
         print("=" * 25)
-        print("Bem-vindo ao menu de participante do Costeira Livre")
+        print(f"Bem-vindo ao menu de participante do Costeira Livre, {dados[cpf][0]}")
         print("Escolha a ação a ser realizada")
         print("(1) - Se inscrever em uma coleta \n(2) - Pontuação \n(3) - Informação da conta \n(4) - Se candidatar a se tornar moderador \n(5) - Fazer uma doação \n(6) - Sair")
         escolha = int(input())
@@ -242,9 +247,9 @@ def menum(): #Entrar em uma conta moderador
         print("=" * 25)
         print(" " * 7, "MENU MOD")
         print("=" * 25)
-        print("Bem-vindo ao menu de moderador do Costeira Livre")
+        print(f"Bem-vindo ao menu de moderador do Costeira Livre, {dados[cpf][0]}")
         print("Escolha a ação a ser realizada")
-        print("(1) - Se inscrever em uma coleta \n(2) - Pontuação \n(3) - Informação da conta \n(4) - Analisar candidatos a moderador \n(5) - Fazer uma doação \n(6) - Criar uma coleta")
+        print("(1) - Se inscrever em uma coleta \n(2) - Pontuação \n(3) - Informação da conta \n(4) - Analisar candidatos a moderador \n(5) - Fazer uma doação \n(6) - Criar uma coleta \n(7) - Criar um ponto de coleta de doações \n(8) - Sair")
         escolha = int(input())
         if escolha == 1:
             participarcoleta(cpf)
@@ -267,26 +272,25 @@ def menum(): #Entrar em uma conta moderador
 
 def acesso(): #Início do programa
     while True:
-
+        global cpf
         print(" ")
         print("=" * 25)
         print(" " * 5, "MENU INICIAL")
         print("=" * 25)
-        print("\nBem-vindo a Costeira Livre \n(1) - Se quiser criar uma conta \n(2) - Para ir para o menu participante \n(3) - Para ir para o menu moderador \n(4) - Se deseja sair insira ")
+        print("\nBem-vindo a Costeira Livre \nEscolha uma das opções para prosseguir: \n\n(1) - Se quiser criar uma conta \n(2) - Para ir para o menu participante \n(3) - Para ir para o menu moderador \n(4) - Se deseja encerrar o programa")
         escolha = int(input())
         if escolha == 1:
             cadastro()
         elif escolha == 2:
-            global cpf
             print("--" * 25)
             print("Insira o CPF (somente número)")
             cpf = int(input())
             if cpf in part:
                 menup()
             else:
+                print("--" * 25)
                 print("Conta não existe")
         elif escolha == 3:
-            global cpf
             print("--" * 25)
             print("Insira o CPF (somente número)")
             cpf = int(input())
@@ -301,4 +305,4 @@ def acesso(): #Início do programa
 
 acesso()
 print("--" * 50)
-print(f"Obrigado por utilizar nosso aplicativo {cpf[0]}, volte denovo.")
+print(f"Obrigado por utilizar nosso aplicativo, volte denovo.")
