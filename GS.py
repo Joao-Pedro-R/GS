@@ -70,35 +70,59 @@ def pontuacao(x): #Esta função serve para ver a quantidade de pontos e as poss
         escolha = int(input())
         if escolha == 1:
             print(f"Você têm {contas[x]} pontos.")
-        elif escolha == 2:
-            print("Lista de recompensas \n@ sasasasasas -- 100 pontos \n@ xarabel -- 200 pontos \n@ xilomil -- 400 pontos \n@ Xerebebel -- 800 pontos \n@ Chumbinho -- 1600 pontos \n@ Rato -- 3200 pontos \n@ Rato grande -- 6400 pontos \n@ Rato bonito -- 12800 pontos")
+        elif escolha == 2: #Recompensas não definidas
+            print("Lista de recompensas: \n@ Recompensa 1 -- 100 pontos \n@ Recompensa 2 -- 200 pontos \n@ Recompensa 3 -- 400 pontos \n@ Recompensa 4 -- 800 pontos \n@ Recompensa 5 -- 1600 pontos \n@ Recompensa 6 -- 3200 pontos \n@ Recompensa 7 -- 6400 pontos \n@ Recompensa 8 -- 12800 pontos")
         elif escolha == 3:
-            print("Lista de recompensas \n(1) sasasasasas -- 100 pontos \n(2) xarabel -- 200 pontos \n(3) xilomil -- 400 pontos \n(4) Xerebebel -- 800 pontos \n(5) Chumbinho -- 1600 pontos \n(6) Rato -- 3200 pontos \n(7) Rato grande -- 6400 pontos \n(8) Rato bonito -- 12800 pontos")
+            print("Lista de recompensas: \n(1) Recompensa 1 -- 100 pontos \n(2) Recompensa 2 -- 200 pontos \n(3) Recompensa 3 -- 400 pontos \n(4) Recompensa 4 -- 800 pontos \n(5) Recompensa 5 -- 1600 pontos \n(6) Recompensa 6 -- 3200 pontos \n(7) Recompensa 7 -- 6400 pontos \n(8) Recompensa 8 -- 12800 pontos")
             resgatar = int(input())
             if resgatar == 1:
-                contas[x] = contas[x] - 100
-                print("sasasasasas")
+                if contas[x] - 100 < 0:
+                    print("Pontos insuficientes para a troca!")
+                else:
+                    contas[x] = contas[x] - 100
+                    print("Recompensa 1")
             elif resgatar == 2:
-                contas[x] = contas[x] - 200
-                print("xarabel")
+                if contas[x] - 200 < 0:
+                    print("Pontos insuficientes para a troca!")
+                else:
+                    contas[x] = contas[x] - 200
+                    print("Recompensa 2")
             elif resgatar == 3:
-                contas[x] = contas[x] - 400
-                print("xilomil")
+                if contas[x] - 400 < 0:
+                    print("Pontos insuficientes para a troca!")
+                else:
+                    contas[x] = contas[x] - 400
+                    print("Recompensa 3")
             elif resgatar == 4:
-                contas[x] = contas[x] - 800
-                print("Xerebebel")
+                if contas[x] - 800 < 0:
+                    print("Pontos insuficientes para a troca!")
+                else:
+                    contas[x] = contas[x] - 800
+                    print("Recompensa 4")
             elif resgatar == 5:
-                contas[x] = contas[x] - 1600
-                print("Chumbinho")
+                if contas[x] - 1600 < 0:
+                    print("Pontos insuficientes para a troca!")
+                else:
+                    contas[x] = contas[x] - 1600
+                    print("Recompensa 5")
             elif resgatar == 6:
-                contas[x] = contas[x] - 3200
-                print("Rato")
+                if contas[x] - 3200 < 0:
+                    print("Pontos insuficientes para a troca!")
+                else:
+                    contas[x] = contas[x] - 3200
+                    print("Recompensa 6")
             elif resgatar == 7:
-                contas[x] = contas[x] - 6400
-                print("Rato grande")
+                if contas[x] - 6400 < 0:
+                    print("Pontos insuficientes para a troca!")
+                else:
+                    contas[x] = contas[x] - 6400
+                    print("Recompensa 7")
             elif resgatar == 8:
-                contas[x] = contas[x] - 12800
-                print("Rato bonito")
+                if contas[x] - 12800 < 0:
+                    print("Pontos insuficientes para a troca!")
+                else:
+                    contas[x] = contas[x] - 12800
+                    print("Recompensa 8")
             else:
                 print("Número inválido!")
         elif escolha == 4:
